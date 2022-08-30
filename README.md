@@ -8,3 +8,7 @@
 - [Ejercicio 2][2]
 
 [2]: https://github.com/alexisarte/DBD/blob/main/practica1/ejercicio2.md
+
+- [Ejercicio 3][3]
+
+[3]: https://github.com/alexisarte/DBD/blob/main/practica1/ejercicio3.md
