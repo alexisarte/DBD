@@ -11,4 +11,4 @@ pasa un empleado indicando una breve descripción de las funciones en esa área.
 debe poder determinar el orden en que fue rotando de área. Discuta al menos tres
 soluciones diferentes para resolver el ejercicio.
 
-![](https://i.imgur.com/35X5q9i.png)
+![](https://i.imgur.com/ij6O3ih.png)
