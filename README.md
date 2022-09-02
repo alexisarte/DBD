@@ -25,3 +25,8 @@
 - [Ejercicio 5.1][5]
 
 [5]: https://github.com/alexisarte/DBD/blob/main/practica1/ejercicio5_1.md
+
+
+- [Ejercicio 6][6]
+
+[6]: https://github.com/alexisarte/DBD/blob/main/practica1/ejercicio6.md
