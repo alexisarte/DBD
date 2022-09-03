@@ -35,3 +35,8 @@
 - [Ejercicio 7][7]
 
 [7]: https://github.com/alexisarte/DBD/blob/main/practica1/ejercicio7.md
+
+
+- [Ejercicio 8][8]
+
+[8]: https://github.com/alexisarte/DBD/blob/main/practica1/ejercicio8.md
