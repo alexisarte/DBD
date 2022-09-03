@@ -34,4 +34,4 @@
 
 - [Ejercicio 7][7]
 
-[7]: https://github.com/alexisarte/DBD/blob/main/practica1/ejercicio6.md
+[7]: https://github.com/alexisarte/DBD/blob/main/practica1/ejercicio7.md
