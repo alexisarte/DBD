@@ -30,3 +30,8 @@
 - [Ejercicio 6][6]
 
 [6]: https://github.com/alexisarte/DBD/blob/main/practica1/ejercicio6.md
+
+
+- [Ejercicio 7][7]
+
+[7]: https://github.com/alexisarte/DBD/blob/main/practica1/ejercicio6.md
