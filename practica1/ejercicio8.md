@@ -10,4 +10,4 @@ Cada pasaje se caracteriza por número de fila y butaca y el vuelo al que corres
 Cuando se vende un pasaje se debe dejar registro del cliente que realizó la compra
 correspondiente.
 
-![](https://i.imgur.com/zQOgW6b.png)
+![](https://i.imgur.com/xs3t9Xo.png)
