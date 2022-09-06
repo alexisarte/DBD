@@ -40,3 +40,8 @@
 - [Ejercicio 8][8]
 
 [8]: https://github.com/alexisarte/DBD/blob/main/practica1/ejercicio8.md
+
+
+- [Ejercicio 9][9]
+
+[9]: https://github.com/alexisarte/DBD/blob/main/practica1/ejercicio9.md
