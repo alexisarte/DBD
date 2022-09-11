@@ -14,4 +14,4 @@ cuenta que se podrían pedir estadísticas sobre mejor o peor cliente, tipos de
 electrodomésticos más vendidos, promedios de ventas por clientes entre otros, discuta
 la mejor solución
 
-![](https://i.imgur.com/6pT8teg.png)
+![](https://i.imgur.com/6RvJKdg.png)
