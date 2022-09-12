@@ -21,4 +21,8 @@ propiedad, precio de venta y comisión de venta.
 Nota: tenga en cuenta que podría pedirse promedio de ventas de un semestre del año,
 vendedor más exitoso del año, tipo de inmueble más alquilado o más vendido entre otros
 
-![](https://i.imgur.com/RzB4y5e.png)
+## Modelo conceptual
+![](https://i.imgur.com/b4nYtDM.png)
+
+## Modelo lógico
+![](https://i.imgur.com/dcFKcpd.png)
