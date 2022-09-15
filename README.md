@@ -50,11 +50,11 @@
 
 ## Práctica 2
 
-- [Ejercicio 1][1]
+- [Ejercicio 100][100]
 
-[1]: https://github.com/alexisarte/DBD/blob/main/practica2/ejercicio1.md
+[100]: https://github.com/alexisarte/DBD/blob/main/practica2/ejercicio1.md
 
 
-- [Ejercicio 2][2]
+- [Ejercicio 110][110]
 
-[2]: https://github.com/alexisarte/DBD/blob/main/practica2/ejercicio2.md
+[110]: https://github.com/alexisarte/DBD/blob/main/practica2/ejercicio2.md
