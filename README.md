@@ -45,3 +45,16 @@
 - [Ejercicio 9][9]
 
 [9]: https://github.com/alexisarte/DBD/blob/main/practica1/ejercicio9.md
+
+
+
+## Práctica 2
+
+- [Ejercicio 1][1]
+
+[1]: https://github.com/alexisarte/DBD/blob/main/practica2/ejercicio1.md
+
+
+- [Ejercicio 2][2]
+
+[2]: https://github.com/alexisarte/DBD/blob/main/practica2/ejercicio2.md
