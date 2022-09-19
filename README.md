@@ -58,3 +58,8 @@
 - [Ejercicio 2][110]
 
 [110]: https://github.com/alexisarte/DBD/blob/main/practica2/ejercicio2.md
+
+
+- [Ejercicio 3][120]
+
+[120]: https://github.com/alexisarte/DBD/blob/main/practica2/ejercicio3.md
