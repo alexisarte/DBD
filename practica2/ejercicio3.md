@@ -5,7 +5,7 @@ De los internos se conoce, nombre, apellido, apodo, número de causa (puede ser 
 Por último es necesario registrar los posibles incidentes ocurridos en la unidad detallando fecha y hora del incidente, internos involucrados, descripción del incidente el pabellón donde ocurrió y el penitenciario responsable.
 
 ## Modelo conceptual
-<!-- ![](https://i.imgur.com/dcFKcpd.png) -->
+![](https://i.imgur.com/vtzyLrc.png)
 
 ## Modelo lógico
 <!-- ![](https://i.imgur.com/dcFKcpd.png) -->
