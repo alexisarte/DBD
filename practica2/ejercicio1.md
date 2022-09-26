@@ -46,7 +46,7 @@ TipoInmueble (`tipo`)
 
 Alquileres (`legajo (fk)`, `fechaInicio`, `fechaFin`?, precio)
 
-Ventas (`fecha`, `hora`, legajo (fk), cliente, empleado, precio, comision)
+Ventas (`fecha`, `hora`, legajo (fk), precio, comision)
 
 Telefonos (`numero`, codigoDeArea (fk))
 
