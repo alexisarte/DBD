@@ -33,13 +33,22 @@ vendedor más exitoso del año, tipo de inmueble más alquilado o más vendido e
 
 ## Modelo físico
 Personas (`dni`, nombre, apellido, direccion, pasaporte)
+
 Empleados (`legajo`, area, dni (fk))
+
 Clientes (sexo, nacionalidad, dni (fk))
+
 Areas (`codigoDeArea`, descripcion, telefonos, ubicacion)
+
 Inmuebles (`codigo`, fechaInicio (fk), legajo (fk), fecha (fk), hora (fk), dni (fk), tipo (fk), direccion, ambientes, balcon, lavadero, banios, alquiler, venta, precioVenta, precioAlquiler, tipo)
+
 TipoInmueble (`tipo`)
+
 Alquileres (`legajo (fk)`, `fechaInicio`, `fechaFin`?, precio)
+
 Ventas (`fecha`, `hora`, legajo (fk), cliente, empleado, precio, comision)
+
 Telefonos (`numero`, codigoDeArea (fk))
+
 Trabaja (`legajo`, `codigoDeArea`, fechaDesde, fechaHasta?)
 
