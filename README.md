@@ -1,7 +1,7 @@
 ### Alquiler de Mobiliario
 
-| Nombre | Cargar Mueble |
-| ------------- | ------------------------------ |
+| Nombre | Cargar Mueble
+| ------------- | ------------------------------
 | Descripción | Este caso de uso describe el evento en el que el encargado del mobiliario da de alta un mueble. |
 | Actores | Encargado de mobiliario |
 | Precondiciones | Autenticarse en el sistema |
