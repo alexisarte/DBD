@@ -36,7 +36,7 @@ Personas (`dni`, nombre, apellido, direccion, pasaporte)
 
 Empleados (`legajo`, dni (fk))
 
-Clientes (`dni`, sexo, nacionalidad)
+Clientes (`dni`, dni (fk), sexo, nacionalidad)
 
 Areas (`codigoDeArea`, descripcion, ubicacion)
 
@@ -44,7 +44,7 @@ Inmuebles (`codigoDeInmueble`, direccion, ambientes, balcon, lavadero, banios, p
 
 TipoInmueble (`tipo`)
 
-Alquileres (`legajo, fechaInicio`, fechaFin?, precio)
+Alquileres (`codigoDeInmueble, fechaInicio`, fechaFin?, precio)
 
 Ventas (`fecha, hora, legajo (fk)`, precio, comision)
 
