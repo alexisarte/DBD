@@ -48,7 +48,7 @@ TipoDeInmueble (`tipo`)
 
 Inmuebles (`codigoDeInmueble`, dni (fk), tipo (fk), direccion, cantidadDeAmbientes, poseeBalcon, poseeLavadero, cantidadDeBanios, seAlquila, seVende, precioDeVenta, precioDeAlquiler) 
 
-Telefonos (`numero`, codigoDeArea (fk))
+Telefonos (`telefono`, codigoDeArea (fk))
 
 Trabajan (`legajo, codigoDeArea`, fechaDesde, fechaHasta?)
 
