@@ -26,10 +26,10 @@ Nota: tenga en cuenta que podría pedirse promedio de ventas de un semestre del 
 vendedor más exitoso del año, tipo de inmueble más alquilado o más vendido entre otros.
 
 ## Modelo conceptual
-![](https://i.imgur.com/b4nYtDM.png)
+![]()
 
 ## Modelo lógico
-![](https://i.imgur.com/dcFKcpd.png)
+![]()
 
 ## Modelo físico
 Personas (`dni`, nombre, apellido, pasaporte, direccion)
@@ -46,7 +46,7 @@ Alquileres (`codigoDeInmueble, fechaInicio`, legajo (fk), fechaFin?, precio)
 
 TipoDeInmueble (`tipo`)
 
-Inmuebles (`codigoDeInmueble`, dni (fk), tipo (fk)  direccion, cantidadDeAmbientes, poseeBalcon, poseeLavadero, cantidadDeBanios, seAlquila, seVende, precioDeVenta, precioDeAlquiler) 
+Inmuebles (`codigoDeInmueble`, dni (fk), tipo (fk), direccion, cantidadDeAmbientes, poseeBalcon, poseeLavadero, cantidadDeBanios, seAlquila, seVende, precioDeVenta, precioDeAlquiler) 
 
 Telefonos (`numero`, codigoDeArea (fk))
 
