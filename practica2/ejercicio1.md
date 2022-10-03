@@ -40,9 +40,9 @@ Clientes (`dni`, sexo, nacionalidad)
 
 Areas (`codigoDeArea`, descripcion, ubicacion)
 
-Ventas (`legajo, fecha, hora`, precio, comision)
+Ventas (`legajo, fecha, hora`, dni (fk), precio, comision)
 
-Alquileres (`codigoDeInmueble, fechaInicio`, legajo (fk), fechaFin?, precio)
+Alquileres (`codigoDeInmueble, fechaInicio`, dni (fk), legajo (fk), fechaFin?, precio)
 
 TipoDeInmueble (`tipo`)
 
