@@ -1,3 +1,4 @@
+
 # Diseño de Bases de Datos
 
 ## Práctica 1
@@ -45,3 +46,21 @@
 - [Ejercicio 9][9]
 
 [9]: https://github.com/alexisarte/DBD/blob/main/practica1/ejercicio9.md
+
+
+
+## Práctica 2
+
+- [Ejercicio 1][100]
+
+[100]: https://github.com/alexisarte/DBD/blob/main/practica2/ejercicio1.md
+
+
+- [Ejercicio 2][110]
+
+[110]: https://github.com/alexisarte/DBD/blob/main/practica2/ejercicio2.md
+
+
+- [Ejercicio 3][120]
+
+[120]: https://github.com/alexisarte/DBD/blob/main/practica2/ejercicio3.md
