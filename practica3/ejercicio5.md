@@ -46,16 +46,16 @@
 
 7. Listar nombre de los clubes que no hayan tenido ni tengan jugadores de la ciudad de La Plata. 
   
-        JugadoresLaPlata ⇐ (π codigoCiudad (σ nombre = ‘La Plata’ (Ciudad))) |x| (π codigoCiudad (Jugador))
+        JugadoresLaPlata ⇐ π dni ((π codigoCiudad (σ nombre = ‘La Plata’ (Ciudad))) |x| (π codigoCiudad, dni (Jugador)))
         ClubesJugadoresLaPlata ⇐ π nombre ((JugadoresLaPlata |x| ClubJugador) |x| Club)
         π nombre (π nombre (Club) - ClubesJugadoresLaPlata)
 
 8. Mostrar dni, nombre y apellido de aquellos jugadores que jugaron o juegan en el club: Club Atlético Rosario Central. 
 
-        JugadoresRosarioCentral ⇐ σ nombre = ‘Club Atlético Rosario Central’ (Club)
-        π dni, nombre, apellido ((JugadoresRosarioCentral |x| ClubJugador) |x| Jugador)
+        ClubRosarioCentral ⇐ π codigoClub (σ nombre = ‘Club Atlético Rosario Central’ (Club))
+        π dni, nombre, apellido ((ClubRosarioCentral |x| ClubJugador) |x| Jugador)
 
 9. Eliminar al jugador cuyo dni es: 24242424.
-  
-        JugadorBorrado ⇐ σ dni = 24242424 (Jugador)
-        JugadorBorrado |x| ClubJugador |x| Club
+
+        ClubJugador ⇐ ClubJugador - (σ dni = 24242424(ClubJugador))
+        Jugador ⇐ Jugador - (σ dni = 24242424 (Jugador))
