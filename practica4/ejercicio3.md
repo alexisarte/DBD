@@ -1,8 +1,13 @@
-3:
+# Ejercicio 3:
+
 Club=(codigoClub, nombre, anioFundacion, codigoCiudad(FK))
+
 Ciudad=(codigoCiudad, nombre)
+
 Estadio=(codigoEstadio, codigoClub(FK), nombre, direccion)
+
 Jugador=(DNI, nombre, apellido, edad, codigoCiudad(FK))
+
 ClubJugador(codigoClub, DNI, desde, hasta)
 
 1. Reportar nombre y anioFundacion de aquellos clubes de la ciudad de La Plata que no
