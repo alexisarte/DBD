@@ -41,8 +41,9 @@ WHERE ((V.FECHA BETWEEN '2019/01/01' AND '2019/01/31') AND (V.descripcion LIKE '
 de mail que termine con ‘@jmail.com’.
 
 ```sql
-SELECT RAZON_SOCIAL, dirección, telef, e-mail FROM AGENCIA NATURAL JOIN VIAJE 
-WHERE VIAJE.FECHA BETWEEN '01/01/2019' AND '31/12/2019' OR VIAJE.descripcion LIKE ‘%@jmail.com’;
+SELECT RAZON_SOCIAL, dirección, telef, email 
+FROM AGENCIA NATURAL JOIN VIAJE 
+WHERE ((VIAJE.FECHA BETWEEN '2019/01/01' AND '2019/12/31') OR (AGENCIA.email LIKE '%@jmail.com'));
 ```
 
 
@@ -51,22 +52,33 @@ Brandsen’
 
 ```sql
 SELECT DNI, nombre, apellido, teléfono, dirección FROM CLIENTE NATURAL JOIN VIAJE
-      INNER JOIN CIUDAD ON (VIAJE.cpDestino = CIUDAD.CODIGOPOSTAL)
-WHERE CIUDAD.nombreCiudad = ‘Coronel Brandsen’;
+    INNER JOIN CIUDAD ON (VIAJE.cpDestino = CIUDAD.CODIGOPOSTAL)
+WHERE CIUDAD.nombreCiudad = 'Coronel Brandsen'
+EXCEPT
+(SELECT DNI, nombre, apellido, teléfono, dirección FROM CLIENTE NATURAL JOIN VIAJE
+    INNER JOIN CIUDAD ON (VIAJE.cpDestino = CIUDAD.CODIGOPOSTAL)
+WHERE CIUDAD.nombreCiudad <> 'Coronel Brandsen');
 ```
 
 
 5. Informar cantidad de viajes de la agencia con razón social ‘TAXI Y’ realizados a ‘Villa Elisa’.
 
 ```sql
-SELECT DNI, nombre, apellido, teléfono, dirección COUNT   
-FROM CLIENTE NATURAL JOIN VIAJE
-      INNER JOIN CIUDAD ON (VIAJE.cpDestino = CIUDAD.CODIGOPOSTAL)
-WHERE CIUDAD.nombreCiudad = ‘Coronel Brandsen’;
+SELECT RAZON_SOCIAL, dirección, telef, email, COUNT(*)  
+FROM AGENCIA NATURAL JOIN VIAJE
+    INNER JOIN CIUDAD ON (VIAJE.cpDestino = CIUDAD.CODIGOPOSTAL)
+WHERE (AGENCIA.RAZON_SOCIAL = 'TAXI Y' AND CIUDAD.nombreCiudad = 'Villa Elisa');
 ```
 
 
 6. Listar nombre, apellido, dirección y teléfono de clientes que viajaron con todas las agencias.
+
+```sql
+SELECT nombre, apellido, teléfono, dirección 
+FROM AGENCIA NATURAL JOIN VIAJE
+    INNER JOIN CIUDAD ON (VIAJE.cpDestino = CIUDAD.CODIGOPOSTAL)
+WHERE (AGENCIA.RAZON_SOCIAL = 'TAXI Y' AND CIUDAD.nombreCiudad = 'Villa Elisa');
+```
 
 
 7. Modificar el cliente con DNI: 38495444 actualizando el teléfono a: 221-4400897.
