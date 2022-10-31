@@ -45,7 +45,7 @@ Torneos2019 ⇐ Equipo |x| (Inscripcion |x| (σ (fecha >= ‘01/01/2019’) ^ (f
 
 6. Eliminar el equipo con código: 10000. 
           
-        Equipo ⇐ Equipo - σ (codigoE = 10000) (Equipo)
+        Equipo ⇐ Equipo - (σ codigoE = 10000 (Equipo))
         
 7. Listar nombreL, ubicación,extensión y descripción de lagunas que no tuvieron torneos.
 
