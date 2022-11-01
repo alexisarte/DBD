@@ -17,7 +17,7 @@
 ```sql
 SELECT AGENCIA.RAZON_SOCIAL, AGENCIA.dirección, AGENCIA.telef
     FROM AGENCIA
-    INNER JOIN VIAJE V ON (AGENCIA.RAZON_SOCIAL = VIAJE.razon_social)
+    INNER JOIN VIAJE ON (AGENCIA.RAZON_SOCIAL = VIAJE.razon_social)
     INNER JOIN CLIENTE ON (VIAJE.DNI = CLIENTE.DNI)
     INNER JOIN CIUDAD ON (VIAJE.cpOrigen = CIUDAD.CODIGOPOSTAL)
 WHERE CIUDAD.nombreCiudad = 'La Plata' AND CLIENTE.apellido = 'Roma'
@@ -90,12 +90,17 @@ WHERE DNI = 38495444;
    viajes realizados.
 
 ```sql
-SELECT RAZON_SOCIAL, dirección, telef, MAX(*)
-FROM (
-        SELECT RAZON_SOCIAL, dirección, telef, COUNT(*)
-        FROM AGENCIA INNER JOIN VIAJE ON (AGENCIA.RAZON_SOCIAL = VIAJE.razon_social)
-        GROUP BY RAZON_SOCIAL, dirección, telef
-);
+-- SELECT RAZON_SOCIAL, dirección, telef, MAX()
+-- FROM (
+SELECT AGENCIA.RAZON_SOCIAL, dirección, telef
+FROM AGENCIA INNER JOIN VIAJE ON (AGENCIA.RAZON_SOCIAL = VIAJE.razon_social)
+GROUP BY AGENCIA.RAZON_SOCIAL, dirección, telef
+HAVING COUNT(*) >= ALL (
+    SELECT COUNT(*)
+FROM AGENCIA INNER JOIN VIAJE ON (AGENCIA.RAZON_SOCIAL = VIAJE.razon_social)
+GROUP BY AGENCIA.RAZON_SOCIAL, dirección, telef
+) ;
+-- );
 ```
 
 9. Reportar nombre, apellido, dirección y teléfono de clientes con al menos 10 viajes.
