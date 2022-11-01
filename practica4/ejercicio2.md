@@ -1,12 +1,13 @@
 # Ejercicio 2
 
-AGENCIA (RAZON_SOCIAL, dirección, telef, e-mail)
+**AGENCIA (RAZON_SOCIAL, dirección, telef, e-mail)**
 
-CIUDAD (CODIGOPOSTAL, nombreCiudad, añoCreación)
+**CIUDAD (CODIGOPOSTAL, nombreCiudad, añoCreación)**
 
-CLIENTE (DNI, nombre, apellido, teléfono, dirección)
+**CLIENTE (DNI, nombre, apellido, teléfono, dirección)**
 
-VIAJE( FECHA, HORA, DNI, cpOrigen(fk), cpDestino(fk), razon_social(fk), descripcion)
+**VIAJE( FECHA, HORA, DNI, cpOrigen(fk), cpDestino(fk), razon_social(fk), descripcion)**
+
 //cpOrigen y cpDestino corresponden a la ciudades origen y destino del viaje
 
 1. Listar razón social, dirección y teléfono de agencias que realizaron viajes desde la ciudad de
