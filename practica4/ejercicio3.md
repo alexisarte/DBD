@@ -1,14 +1,14 @@
 # Ejercicio 3:
 
-Club=(codigoClub, nombre, anioFundacion, codigoCiudad(FK))
+**Club=(codigoClub, nombre, anioFundacion, codigoCiudad(FK))**
 
-Ciudad=(codigoCiudad, nombre)
+**Ciudad=(codigoCiudad, nombre)**
 
-Estadio=(codigoEstadio, codigoClub(FK), nombre, direccion)
+**Estadio=(codigoEstadio, codigoClub(FK), nombre, direccion)**
 
-Jugador=(DNI, nombre, apellido, edad, codigoCiudad(FK))
+**Jugador=(DNI, nombre, apellido, edad, codigoCiudad(FK))**
 
-ClubJugador(codigoClub, DNI, desde, hasta)
+**ClubJugador(codigoClub, DNI, desde, hasta)**
 
 1. Reportar nombre y anioFundacion de aquellos clubes de la ciudad de La Plata que no
 poseen estadio.
@@ -72,7 +72,7 @@ SELECT Club.nombre, Jugador.nombre AVG(edad) AS PROMEDIO
       FROM Club INNER JOIN ClubJugador ON (Club.codigoClub = ClubJugador.codigoClub)
       INNER JOIN Jugador ON (ClubJugador.DNI = Jugador.DNI)
 WHERE ClubJugador.hasta > '25/10/2022'
-GROUP_BY Club.codigoClub, Club.nombre, Jugador.nombre
+GROUP BY Club.codigoClub, Club.nombre, Jugador.nombre
 ```
 
 
@@ -90,8 +90,41 @@ GROUP_BY DNI, Club.nombre, Jugador.nombre
 
 7. Mostrar el nombre de los clubes que nunca hayan tenido jugadores de la ciudad de Mar
 del Plata.
+
+```sql
+SELECT Club.nombre
+      FROM Club INNER JOIN ClubJugador ON (Club.codigoClub = ClubJugador.codigoClub)
+      INNER JOIN Jugador ON (ClubJugador.DNI = Jugador.DNI)
+WHERE Jugador.DNI NOT IN (
+      SELECT Jugador.DNI
+      FROM Club INNER JOIN ClubJugador ON (Club.codigoClub = ClubJugador.codigoClub)
+      INNER JOIN Jugador ON (ClubJugador.DNI = Jugador.DNI)
+      INNER JOIN Ciudad ON (ClubJugador.DNI = Ciudad.DNI)
+      WHERE Club.nombreClub = 'Mar del Plata';
+);
+```
+
 8. Reportar el nombre y apellido de aquellos jugadores que hayan jugado en todos los
 clubes.
+
+```sql
+SELECT nombre, apellido
+      FROM Jugador 
+      WHERE NOT EXISTS (SELECT * 
+                        FROM Club 
+                        WHERE NOT EXISTS (SELECT * 
+                                          FROM Club
+                                          WHERE (Club.codigoClub = ClubJugador.codigoClub) 
+                                          AND (ClubJugador.DNI = Jugador.DNI);
+```
+
 9. Agregar con codigoClub 1234 el club “Estrella de Berisso” que se fundó en 1921 y que
 pertenece a la ciudad de Berisso. Puede asumir que el codigoClub 1234 no existe en la
 tabla Club.
+
+```sql
+INSERT INTO Club (codigoClub, nombre, anioFundacion, codigoCiudad) 
+VALUES ('Jorge Luis', 'Estrella de Berisso', 1921, 221-4400789, (
+      SELECT codigoCiudad FROM Ciudad WHERE Ciudad.nombre = Berisso
+));
+```
