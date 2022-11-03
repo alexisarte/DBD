@@ -21,9 +21,9 @@ ORDER BY DNI;
 
 ```sql
 SELECT nombre, apellido, DNI, telefono, direccion FROM Cliente NATURAL JOIN Factura 
-WHERE (fecha not BETWEEN '01/01/2017' AND '31/12/2017')
+WHERE (fecha BETWEEN '01/01/2017' AND '31/12/2017')
 EXCEPT (SELECT nombre, apellido, DNI, telefono, direccion FROM Cliente NATURAL JOIN Factura 
-WHERE fecha BETWEEN '01/01/2017' AND '31/12/2017');
+WHERE fecha NOT BETWEEN '01/01/2017' AND '31/12/2017');
 ```
 
 3. Listar nombre, descripción, precio y stock de productos vendidos al cliente con DNI:45789456,
