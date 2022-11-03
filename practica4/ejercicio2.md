@@ -99,7 +99,7 @@ HAVING COUNT(*) >= ALL (
     SELECT COUNT(*)
 FROM AGENCIA INNER JOIN VIAJE ON (AGENCIA.RAZON_SOCIAL = VIAJE.razon_social)
 GROUP BY AGENCIA.RAZON_SOCIAL, dirección, telef
-) ;
+);
 -- );
 ```
 
