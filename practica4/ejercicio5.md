@@ -98,3 +98,10 @@ DELETE FROM Podador WHERE DNI = 22234566;
 ```
 9. Reportar nombre, descripción y cantidad de habitantes de localidades que tengan menos de
    100 árboles.
+
+```sql
+SELECT nombreL, descripción, #habitantes
+FROM Arbol A INNER JOIN Localidad ON (A.codigoPostal = Localidad.codigoPostal)
+GROUP BY nombreL, descripción, #habitantes
+HAVING COUNT(*) < 100;
+```
