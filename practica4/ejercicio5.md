@@ -91,5 +91,10 @@ WHERE ((nombreL = 'La Plata') AND (A.nroArbol IN (SELECT A.nroArbol
 ```
 
 8. Eliminar el podador con DNI: 22234566.
+
+```sql
+DELETE FROM Poda WHERE DNI = 22234566 ;
+DELETE FROM Podador WHERE DNI = 22234566;
+```
 9. Reportar nombre, descripción y cantidad de habitantes de localidades que tengan menos de
    100 árboles.
