@@ -39,10 +39,18 @@ WHERE nroArbol NOT IN (SELECT Arbol.nroArbol
                                   INNER JOIN Localidad ON (Arbol.codigoPostal = Localidad.codigoPostal));
 ```
 
-4. Reportar especie, años,calle, nro y localidad de árboles que fueron podados durante 2017 y
+4. Reportar especie, años, calle, nro y localidad de árboles que fueron podados durante 2017 y
    no fueron podados durante 2018.
 
-
+```sql
+SELECT especie, años, calle, nro, nombreL
+FROM Arbol INNER JOIN Poda ON (Arbol.nroArbol = Poda.nroArbol)
+WHERE ((Poda.fecha BETWEEN '2017/01/01' AND '2017/12/31') 
+        AND (nroArbol NOT IN (SELECT Arbol.nroArbol
+                              FROM Arbol INNER JOIN Poda ON (Arbol.nroArbol = Poda.nroArbol)
+                                          INNER JOIN Localidad ON (Arbol.codigoPostal = Localidad.codigoPostal)
+                                          WHERE ((Poda.fecha BETWEEN '2018/01/01' AND '2018/12/31')))));
+```
 
 5. Reportar DNI, nombre, apellido, fnac y localidad donde viven podadores con apellido
    terminado con el string ‘ata’ y que el podador tenga al menos una poda durante 2018.
