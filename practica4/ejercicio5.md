@@ -81,6 +81,15 @@ WHERE ((Arbol.especie = 'Coníferas') AND (Podador.DNI NOT IN(SELECT Podador.DNI
 
 7. Listar especie de árboles que se encuentren en la localidad de ‘La Plata’ y también en la
    localidad de ‘Salta’.
+
+```sql
+SELECT especie
+FROM Arbol A INNER JOIN Localidad ON (A.codigoPostal = Localidad.codigoPostal)
+WHERE ((nombreL = 'La Plata') AND (A.nroArbol IN (SELECT A.nroArbol
+                                                  FROM A INNER JOIN Localidad ON (A.codigoPostal = Localidad.codigoPostal)
+                                                  WHERE ((nombreL = 'Salta')))));
+```
+
 8. Eliminar el podador con DNI: 22234566.
 9. Reportar nombre, descripción y cantidad de habitantes de localidades que tengan menos de
    100 árboles.
