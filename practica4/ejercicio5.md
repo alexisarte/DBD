@@ -68,6 +68,17 @@ ORDER BY apellido, Podador.nombre
 
 6. Listar DNI, apellido, nombre, teléfono y fecha de nacimiento de podadores que solo podaron
    árboles de especie ‘Coníferas’.
+
+```sql
+SELECT DISTINCT (Podador.DNI, nombre, apellido, fnac)
+FROM Podador INNER JOIN Poda ON (Podador.DNI = Poda.DNI)
+             INNER JOIN Arbol ON (Arbol.nroArbol = Poda.nroArbol)
+WHERE ((Arbol.especie = 'Coníferas') AND (Podador.DNI NOT IN(SELECT Podador.DNI
+                                                             FROM Podador INNER JOIN Poda ON (Podador.DNI = Poda.DNI)
+                                                                          INNER JOIN Arbol ON (Arbol.nroArbol = Poda.nroArbol)
+                                                             WHERE ((Arbol.especie <> 'Coníferas')))));
+```
+
 7. Listar especie de árboles que se encuentren en la localidad de ‘La Plata’ y también en la
    localidad de ‘Salta’.
 8. Eliminar el podador con DNI: 22234566.
