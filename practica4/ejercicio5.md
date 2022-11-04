@@ -55,6 +55,17 @@ WHERE ((Poda.fecha BETWEEN '2017/01/01' AND '2017/12/31')
 5. Reportar DNI, nombre, apellido, fnac y localidad donde viven podadores con apellido
    terminado con el string ‘ata’ y que el podador tenga al menos una poda durante 2018.
    Ordenar por apellido y nombre.
+
+```sql
+SELECT DISTINCT (Podador.DNI, nombre, apellido, fnac, nombreL)
+FROM Podador INNER JOIN Poda ON (Podador.DNI = Poda.DNI)
+             INNER JOIN Localidad ON (Podador.codigoPostalVive = Localidad.codigoPostal)
+WHERE ((Podador.apellido LIKE '%ata') AND (Poda.fecha BETWEEN '2018/01/01' AND '2018/12/31'));
+GROUP BY Podador.DNI, nombre, apellido, fnac, nombreL
+HAVING COUNT(*) >= 1
+ORDER BY apellido, Podador.nombre
+```
+
 6. Listar DNI, apellido, nombre, teléfono y fecha de nacimiento de podadores que solo podaron
    árboles de especie ‘Coníferas’.
 7. Listar especie de árboles que se encuentren en la localidad de ‘La Plata’ y también en la
