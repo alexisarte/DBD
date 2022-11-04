@@ -115,7 +115,7 @@ SELECT nombre, apellido
                         WHERE NOT EXISTS (SELECT * 
                                           FROM Club
                                           WHERE (Club.codigoClub = ClubJugador.codigoClub) 
-                                          AND (ClubJugador.DNI = Jugador.DNI);
+                                          AND (ClubJugador.DNI = Jugador.DNI)));
 ```
 
 9. Agregar con codigoClub 1234 el club “Estrella de Berisso” que se fundó en 1921 y que
