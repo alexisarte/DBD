@@ -34,6 +34,14 @@ WHERE ((Reparación.fecha  BETWEEN '2019/01/01' AND '2019/12/31')
 
 3. Listar el nombre, especialidad de técnicos que no participaron en ninguna
 reparación. Ordenar por nombre ascendentemente.
+
+```sql
+SELECT Técnico.nombre, especialidad
+FROM Técnico LEFT JOIN Reparación ON (Técnico.codTec = Reparación.codTec)
+WHERE Reparación.codTec IS NULL
+ORDER BY Técnico.nombre;
+```
+
 4. Listar el nombre, especialidad de técnicos solo participaron en reparaciones durante
 2018.
 5. Listar para cada repuesto nombre, stock y cantidad de técnicos distintos que lo
