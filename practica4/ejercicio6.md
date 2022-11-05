@@ -48,7 +48,12 @@ ORDER BY Técnico.nombre;
 ```sql
 SELECT Técnico.nombre, especialidad
 FROM Técnico INNER JOIN Reparación ON (Técnico.codTec = Reparación.codTec)
-WHERE (Reparación.fecha BETWEEN '2018/01/01' AND '2018/12/31');
+WHERE (Reparación.fecha BETWEEN '2018/01/01' AND '2018/12/31')
+EXCEPT (
+    SELECT Técnico.nombre, Técnico.especialidad
+    FROM Tecnico INNER JOIN Reparacion (Técnico.codTec = Reparacion.codTec)
+    WHERE NOT(Reparacion.fecha BETWEEN "01/01/2018" AND "31/12/2018")
+)
 ```
 
 5. Listar para cada repuesto nombre, stock y cantidad de técnicos distintos que lo
