@@ -44,6 +44,13 @@ ORDER BY Técnico.nombre;
 
 4. Listar el nombre, especialidad de técnicos solo participaron en reparaciones durante
 2018.
+
+```sql
+SELECT Técnico.nombre, especialidad
+FROM Técnico INNER JOIN Reparación ON (Técnico.codTec = Reparación.codTec)
+WHERE (Reparación.fecha BETWEEN '2018/01/01' AND '2018/12/31');
+```
+
 5. Listar para cada repuesto nombre, stock y cantidad de técnicos distintos que lo
 utilizaron. Si un repuesto no participó en alguna reparación igual debe aparecer en
 dicho listado.
