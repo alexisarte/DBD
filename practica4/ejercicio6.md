@@ -20,7 +20,18 @@ ORDER BY precio;
 
 2. Listar nombre, stock, precio de repuesto que participaron en reparaciones durante
 2019 y además no participaron en reparaciones del técnico ‘José Gonzalez’.
- 
+
+```sql
+SELECT Repuesto.nombre, stock, precio
+FROM Repuesto INNER JOIN RepuestoReparacion RR ON (Repuesto.codRep = RR.codRep)
+              INNER JOIN Reparación ON (RR.nroReparac = Reparación.nroReparac)
+WHERE ((Reparación.fecha  BETWEEN '2019/01/01' AND '2019/12/31') 
+        AND Reparación.nroReparac NOT IN (SELECT RR.nroReparac
+                                          FROM Técnico INNER JOIN Repuesto ON (Técnico.codTec = Repuesto.codTec)
+                                                       INNER JOIN RR ON (Repuesto.codRep = RR.codRep)
+                                          WHERE ((Técnico.nombre = 'José') AND (Técnico.apellido = 'Gonzalez'))));
+```
+
 3. Listar el nombre, especialidad de técnicos que no participaron en ninguna
 reparación. Ordenar por nombre ascendentemente.
 4. Listar el nombre, especialidad de técnicos solo participaron en reparaciones durante
