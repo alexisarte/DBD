@@ -32,7 +32,7 @@ EXCEPT (
                         INNER JOIN Reparacion ON (RR.nroReparac = Reparacion.nroReparac)
                         INNER JOIN Tecnico ON (Reparacion.codTec = Tecnico.codTec)
         WHERE (Tecnico.nombre = "Jose Gonzalez")
-)
+);
 ```
 
 3. Listar el nombre, especialidad de técnicos que no participaron en ninguna
@@ -45,8 +45,7 @@ WHERE Reparación.codTec IS NULL
 ORDER BY Técnico.nombre;
 ```
 
-4. Listar el nombre, especialidad de técnicos solo participaron en reparaciones durante
-2018.
+4. Listar el nombre, especialidad de técnicos solo participaron en reparaciones durante 2018.
 
 ```sql
 SELECT Técnico.nombre, especialidad
@@ -56,7 +55,7 @@ EXCEPT (
     SELECT Técnico.nombre, Técnico.especialidad
     FROM Tecnico INNER JOIN Reparacion (Técnico.codTec = Reparacion.codTec)
     WHERE NOT(Reparacion.fecha BETWEEN "01/01/2018" AND "31/12/2018")
-)
+);
 ```
 
 5. Listar para cada repuesto nombre, stock y cantidad de técnicos distintos que lo
