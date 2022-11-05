@@ -139,7 +139,7 @@ divorciado.
 ```sql
 UPDATE PERSONA
 SET Estado_Civil = 'divorciado'
-WHERE DNI = (SELECT DNI FROM ALUMNO WHERE Legajo = '2020/09';)
+WHERE DNI = (SELECT DNI FROM ALUMNO WHERE Legajo = '2020/09');
 ```
 
 11. Dar de baja el alumno con DNI 30568989. Realizar todas las bajas necesarias para no

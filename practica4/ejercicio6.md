@@ -22,14 +22,17 @@ ORDER BY precio;
 2019 y además no participaron en reparaciones del técnico ‘José Gonzalez’.
 
 ```sql
-SELECT Repuesto.nombre, stock, precio
-FROM Repuesto INNER JOIN RepuestoReparacion RR ON (Repuesto.codRep = RR.codRep)
-              INNER JOIN Reparación ON (RR.nroReparac = Reparación.nroReparac)
-WHERE ((Reparación.fecha  BETWEEN '2019/01/01' AND '2019/12/31') 
-        AND Repuesto.codRep NOT IN (SELECT RR.codRep
-                                          FROM Técnico
-                                          WHERE ((Técnico.codTec = RR.codTec) 
-                                                  AND ((Técnico.nombre = 'José') AND (Técnico.apellido = 'Gonzalez')))));
+SELECT DISTINCT Repuesto.nombre, Repuesto.stock, Repuesto.precio
+FROM Repuesto R INNER JOIN RepuestoReparacion RR ON (R.codRep = RR.codRep)
+                INNER JOIN Reparacion ON (RR.nroReparac = Reparacion.nroReparac)
+WHERE (Reparacion.fecha BETWEEN '2019/01/01' AND '2019/12/31')
+EXCEPT (
+        SELECT DISTINCT Repuesto.nombre, Repuesto.stock, Repuesto.precio
+        FROM Repuesto R INNER JOIN RepuestoReparacion RR ON (R.codRep = RR.codRep)
+                        INNER JOIN Reparacion ON (RR.nroReparac = Reparacion.nroReparac)
+                        INNER JOIN Tecnico ON (Reparacion.codTec = Tecnico.codTec)
+        WHERE (Tecnico.nombre = "Jose Gonzalez")
+)
 ```
 
 3. Listar el nombre, especialidad de técnicos que no participaron en ninguna
@@ -59,6 +62,14 @@ EXCEPT (
 5. Listar para cada repuesto nombre, stock y cantidad de técnicos distintos que lo
 utilizaron. Si un repuesto no participó en alguna reparación igual debe aparecer en
 dicho listado.
+
+```sql
+SELECT Repuesto.nombre, stock, COUNT(DISTINCT Reparación.codTec) AS cantidad_tecnicos
+FROM Repuesto LEFT JOIN RepuestoReparacion RR ON (Repuesto.codRep = RR.codRep)
+              LEFT JOIN Reparación ON (RR.nroReparac = Reparación.nroReparac)
+GROUP BY Repuesto.nombre, stock;
+```
+
 6. Listar nombre y especialidad del técnico con mayor cantidad de reparaciones
 realizadas y el técnico con menor cantidad de reparaciones.
 7. Listar nombre, stock y precio de todos los repuestos con stock mayor a 0 y que
