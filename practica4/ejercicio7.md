@@ -18,6 +18,17 @@ WHERE ((I.fecha_nacimiento BETWEEN '1980/01/01' AND '1990/12/31') AND (R.fecha B
 ```
 2. Reportar nombre, género musical y año de creación de bandas que hayan realizado
 recitales durante 2018, pero no hayan tocado durante 2017 .
+
+```sql
+SELECT DISTINCT (B.nombreBanda, B.genero_musical, B.año_creacion)
+FROM Banda B INNER JOIN Recital R ON (B.codigoB = R.codigoB)
+WHERE (R.fecha BETWEEN '2018/01/01' AND '2018/12/31')
+EXCEPT (
+    SELECT DISTINCT (B.nombreBanda, B.genero_musical, B.año_creacion)
+    FROM Banda B INNER JOIN Recital R ON (B.codigoB = R.codigoB)
+    WHERE (R.fecha BETWEEN '2017/01/01' AND '2017/12/31')
+);
+```
 3. Listar el cronograma de recitales del dia 04/12/2018. Se deberá listar: nombre de la banda
 que ejecutará el recital, fecha, hora, y el nombre y ubicación del escenario correspondiente.
 4. Listar DNI, nombre, apellido,email de integrantes que hayan tocado en el escenario con
