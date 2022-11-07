@@ -91,6 +91,14 @@ HAVING COUNT(Reparación.nroReparac) >= ALL (
 
 7. Listar nombre, stock y precio de todos los repuestos con stock mayor a 0 y que
 dicho repuesto no haya estado en reparaciones con precio_total superior a 10000.
+
+```sql
+SELECT Repuesto.nombre, stock, precio
+FROM Repuesto LEFT JOIN RepuestoReparacion RR ON (Repuesto.codRep = RR.codRep)
+              LEFT JOIN Reparación ON (RR.nroReparac = Reparación.nroReparac)
+WHERE (stock > 0) AND (Reparación.precio_total <= 10000);
+```
+
 8. Proyectar precio, fecha y precio total de aquellas reparaciones donde se utilizó algún
 repuesto con precio en el momento de la reparación mayor a $1000 y menor a
 $5000.
