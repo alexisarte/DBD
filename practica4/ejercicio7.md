@@ -29,8 +29,17 @@ EXCEPT (
     WHERE (R.fecha BETWEEN '2017/01/01' AND '2017/12/31')
 );
 ```
+
 3. Listar el cronograma de recitales del dia 04/12/2018. Se deberá listar: nombre de la banda
 que ejecutará el recital, fecha, hora, y el nombre y ubicación del escenario correspondiente.
+  
+```sql
+SELECT DISTINCT (B.nombreBanda, R.fecha, R.hora, E.nombre_escenario, E.ubicacion)
+FROM Banda B INNER JOIN Recital R ON (B.codigoB = R.codigoB) 
+             INNER JOIN Escenario E ON (R.nroEscenario = E.nroEscenario)
+WHERE (R.fecha = '2018/12/04');
+```
+
 4. Listar DNI, nombre, apellido,email de integrantes que hayan tocado en el escenario con
 nombre ‘Gustavo Cerati’ y en el escenario con nombre ‘Carlos Gardel’.
 5. Reportar nombre, género musical y año de creación de bandas que tengan más de 8
