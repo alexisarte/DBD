@@ -71,6 +71,24 @@ GROUP BY Repuesto.nombre, stock;
 
 6. Listar nombre y especialidad del técnico con mayor cantidad de reparaciones
 realizadas y el técnico con menor cantidad de reparaciones.
+
+```sql
+SELECT Técnico.nombre, especialidad
+FROM Técnico INNER JOIN Reparación ON (Técnico.codTec = Reparación.codTec)
+GROUP BY Técnico.nombre, especialidad
+HAVING COUNT(Reparación.nroReparac) >= ALL (
+    SELECT COUNT(Reparación.nroReparac)
+    FROM Técnico INNER JOIN Reparación ON (Técnico.codTec = Reparación.codTec)
+    GROUP BY Técnico.nombre, especialidad
+    )
+    OR
+    COUNT(Reparación.nroReparac) <= ALL (
+    SELECT COUNT(Reparación.nroReparac)
+    FROM Técnico INNER JOIN Reparación ON (Técnico.codTec = Reparación.codTec)
+    GROUP BY Técnico.nombre, especialidad
+    );
+```
+
 7. Listar nombre, stock y precio de todos los repuestos con stock mayor a 0 y que
 dicho repuesto no haya estado en reparaciones con precio_total superior a 10000.
 8. Proyectar precio, fecha y precio total de aquellas reparaciones donde se utilizó algún
