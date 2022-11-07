@@ -2,11 +2,11 @@
 
 **Banda(codigoB, nombreBanda, genero_musical, año_creacion)**
 
-**Integrante (DNI, nombre, apellido,dirección,email, fecha_nacimiento,codigoB(fk))**
+**Integrante (DNI, nombre, apellido, dirección, email, fecha_nacimiento, codigoB(fk))**
 
-**Escenario(nroEscenario, nombre _ escenario, ubicación,cubierto, m2, descripción)**
+**Escenario(nroEscenario, nombre _ escenario, ubicación, cubierto, m2, descripción)**
 
-**Recital(fecha,hora,nroEscenario, codigoB (fk))**
+**Recital(fecha, hora, nroEscenario, codigoB (fk))**
 
 1. Listar DNI, nombre, apellido, dirección y email de integrantes nacidos entre 1980 y 1990 y
 hayan realizado algún recital durante 2018.
@@ -85,5 +85,27 @@ ORDER BY E.nombre_escenario;
 
 7. Listar nombre, género musical y año de creación de bandas que hayan realizado recitales
 en escenarios cubiertos durante 2018.// cubierto es true, false según corresponda
+
+```sql
+SELECT DISTINCT (B.nombreBanda, B.genero_musical, B.año_creacion)
+FROM Banda B INNER JOIN Recital R ON (B.codigoB = R.codigoB)
+             INNER JOIN Escenario E ON (R.nroEscenario = E.nroEscenario)
+WHERE (E.cubierto = true) AND (R.fecha BETWEEN '2018/01/01' AND '2018/12/31');
+```
+
 8. Reportar para cada escenario, nombre del escenario y cantidad de recitales durante 2018.
+
+```sql
+SELECT DISTINCT (E.nombre_escenario, COUNT(R.nroRecital))
+FROM Escenario E INNER JOIN Recital R ON (E.nroEscenario = R.nroEscenario)
+WHERE (R.fecha BETWEEN '2018/01/01' AND '2018/12/31')
+GROUP BY E.nroEscenario E.nombre_escenario;
+```
+
 9. Modificar el nombre de la banda ‘Mempis la Blusera’ a: ‘Memphis la Blusera’.
+
+```sql
+UPDATE Banda
+SET nombreBanda = 'Memphis la Blusera'
+WHERE nombreBanda = 'Mempis la Blusera';
+```
