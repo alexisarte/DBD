@@ -58,6 +58,14 @@ INTERSECT (
 
 5. Reportar nombre, género musical y año de creación de bandas que tengan más de 8
 integrantes.
+
+```sql
+SELECT DISTINCT (B.nombreBanda, B.genero_musical, B.año_creacion)
+FROM Banda B INNER JOIN Integrante I ON (B.codigoB = I.codigoB)
+GROUP BY B.codigoB, B.nombreBanda, B.genero_musical, B.año_creacion
+HAVING COUNT(I.DNI) > 8;
+```
+
 6. Listar nombre de escenario, ubicación y descripción de escenarios que solo tuvieron
 recitales con género musical rock and roll. Ordenar por nombre de escenario
 7. Listar nombre, género musical y año de creación de bandas que hayan realizado recitales
