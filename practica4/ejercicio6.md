@@ -112,5 +112,19 @@ WHERE ((RR.precio > 1000) AND (RR.precio < 5000));
 
 9. Listar nombre, stock y precio de repuestos que hayan sido utilizados en todas las
 reparaciones
+
+```sql
+SELECT Repuesto.nombre, stock, precio
+FROM Repuesto INNER JOIN RepuestoReparacion RR ON (Repuesto.codRep = RR.codRep)
+              INNER JOIN Reparación ON (RR.nroReparac = Reparación.nroReparac)
+GROUP BY Repuesto.nombre, stock, precio
+HAVING COUNT(Reparación.nroReparac) = ALL (
+    SELECT COUNT(Reparación.nroReparac)
+    FROM Repuesto INNER JOIN RepuestoReparacion RR ON (Repuesto.codRep = RR.codRep)
+                  INNER JOIN Reparación ON (RR.nroReparac = Reparación.nroReparac)
+    GROUP BY Repuesto.nombre, stock, precio
+    );
+```
+
 10. Listar fecha, técnico y precio total de aquellas reparaciones que necesitaron al
 menos 10 repuestos distintos.
