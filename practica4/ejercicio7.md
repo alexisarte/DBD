@@ -68,6 +68,21 @@ HAVING COUNT(I.DNI) > 8;
 
 6. Listar nombre de escenario, ubicación y descripción de escenarios que solo tuvieron
 recitales con género musical rock and roll. Ordenar por nombre de escenario
+
+```sql
+SELECT DISTINCT (E.nombre_escenario, E.ubicacion, E.descripcion)
+FROM Escenario E INNER JOIN Recital R ON (E.nroEscenario = R.nroEscenario)
+                 INNER JOIN Banda B ON (R.codigoB = B.codigoB)
+WHERE (B.genero_musical = 'rock and roll')
+EXCEPT (
+    SELECT DISTINCT (E.nombre_escenario, E.ubicacion, E.descripcion)
+    FROM Escenario E INNER JOIN Recital R ON (E.nroEscenario = R.nroEscenario)
+                     INNER JOIN Banda B ON (R.codigoB = B.codigoB)
+    WHERE (B.genero_musical <> 'rock and roll')
+)
+ORDER BY E.nombre_escenario;
+```
+
 7. Listar nombre, género musical y año de creación de bandas que hayan realizado recitales
 en escenarios cubiertos durante 2018.// cubierto es true, false según corresponda
 8. Reportar para cada escenario, nombre del escenario y cantidad de recitales durante 2018.
