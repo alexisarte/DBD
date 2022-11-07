@@ -128,3 +128,11 @@ HAVING COUNT(Reparación.nroReparac) = ALL (
 
 10. Listar fecha, técnico y precio total de aquellas reparaciones que necesitaron al
 menos 10 repuestos distintos.
+
+```sql
+SELECT Reparación.fecha, Técnico.nombre, Reparación.precio_total
+FROM Reparación INNER JOIN Técnico ON (Reparación.codTec = Técnico.codTec)
+                INNER JOIN RepuestoReparacion RR ON (Reparación.nroReparac = RR.nroReparac)
+GROUP BY Reparación.fecha, Técnico.nombre, Reparación.precio_total
+HAVING COUNT(DISTINCT RR.codRep) >= 10;
+```
