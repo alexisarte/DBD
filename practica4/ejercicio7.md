@@ -40,8 +40,22 @@ FROM Banda B INNER JOIN Recital R ON (B.codigoB = R.codigoB)
 WHERE (R.fecha = '2018/12/04');
 ```
 
-4. Listar DNI, nombre, apellido,email de integrantes que hayan tocado en el escenario con
+4. Listar DNI, nombre, apellido, email de integrantes que hayan tocado en el escenario con
 nombre ‘Gustavo Cerati’ y en el escenario con nombre ‘Carlos Gardel’.
+
+```sql  
+SELECT DISTINCT (I.DNI, I.nombre, I.apellido, I.email)
+FROM Integrante I INNER JOIN Recital R ON (I.codigoB = R.codigoB)
+                  INNER JOIN Escenario E ON (R.nroEscenario = E.nroEscenario)
+WHERE (E.nombre_escenario = 'Gustavo Cerati') 
+INTERSECT (
+    SELECT DISTINCT (I.DNI)DISTINCT (I.DNI, I.nombre, I.apellido, I.email)
+    FROM Integrante I INNER JOIN Recital R ON (I.codigoB = R.codigoB)
+                      INNER JOIN Escenario E ON (R.nroEscenario = E.nroEscenario)
+    WHERE (E.nombre_escenario = 'Carlos Gardel')
+);
+```
+
 5. Reportar nombre, género musical y año de creación de bandas que tengan más de 8
 integrantes.
 6. Listar nombre de escenario, ubicación y descripción de escenarios que solo tuvieron
