@@ -102,6 +102,14 @@ WHERE (stock > 0) AND (Reparación.precio_total <= 10000);
 8. Proyectar precio, fecha y precio total de aquellas reparaciones donde se utilizó algún
 repuesto con precio en el momento de la reparación mayor a $1000 y menor a
 $5000.
+
+```sql
+SELECT RR.precio, Reparación.fecha, Reparación.precio_total
+FROM Reparación INNER JOIN RepuestoReparacion RR ON (Reparación.nroReparac = RR.nroReparac)
+                INNER JOIN Repuesto ON (RR.codRep = Repuesto.codRep)
+WHERE ((RR.precio > 1000) AND (RR.precio < 5000));
+```
+
 9. Listar nombre, stock y precio de repuestos que hayan sido utilizados en todas las
 reparaciones
 10. Listar fecha, técnico y precio total de aquellas reparaciones que necesitaron al
