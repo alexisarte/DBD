@@ -90,17 +90,12 @@ WHERE DNI = 38495444;
    viajes realizados.
 
 ```sql
--- SELECT RAZON_SOCIAL, dirección, telef, MAX()
--- FROM (
-SELECT AGENCIA.RAZON_SOCIAL, dirección, telef
-FROM AGENCIA INNER JOIN VIAJE ON (AGENCIA.RAZON_SOCIAL = VIAJE.razon_social)
-GROUP BY AGENCIA.RAZON_SOCIAL, dirección, telef
-HAVING COUNT(*) >= ALL (
-    SELECT COUNT(*)
-FROM AGENCIA INNER JOIN VIAJE ON (AGENCIA.RAZON_SOCIAL = VIAJE.razon_social)
-GROUP BY AGENCIA.RAZON_SOCIAL, dirección, telef
-);
--- );
+SELECT RAZON_SOCIAL, dirección, telef
+FROM AGENCIA NATURAL JOIN VIAJE
+GROUP BY RAZON_SOCIAL, dirección, telef
+HAVING COUNT(*) = (SELECT MAX(COUNT(*))
+                    FROM AGENCIA NATURAL JOIN VIAJE
+                    GROUP BY RAZON_SOCIAL, dirección, telef);
 ```
 
 9. Reportar nombre, apellido, dirección y teléfono de clientes con al menos 10 viajes.

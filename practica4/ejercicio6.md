@@ -75,17 +75,17 @@ realizadas y el técnico con menor cantidad de reparaciones.
 ```sql
 SELECT Técnico.nombre, especialidad
 FROM Técnico INNER JOIN Reparación ON (Técnico.codTec = Reparación.codTec)
-GROUP BY Técnico.nombre, especialidad
+GROUP BY Técnico.codTec, Técnico.nombre, especialidad
 HAVING COUNT(Reparación.nroReparac) >= ALL (
     SELECT COUNT(Reparación.nroReparac)
     FROM Técnico INNER JOIN Reparación ON (Técnico.codTec = Reparación.codTec)
-    GROUP BY Técnico.nombre, especialidad
+    GROUP BY Técnico.codTec, Técnico.nombre, especialidad
     )
     OR
     COUNT(Reparación.nroReparac) <= ALL (
     SELECT COUNT(Reparación.nroReparac)
     FROM Técnico INNER JOIN Reparación ON (Técnico.codTec = Reparación.codTec)
-    GROUP BY Técnico.nombre, especialidad
+    GROUP BY Técnico.codTec, Técnico.nombre, especialidad
     );
 ```
 
@@ -106,7 +106,6 @@ $5000.
 ```sql
 SELECT RR.precio, Reparación.fecha, Reparación.precio_total
 FROM Reparación INNER JOIN RepuestoReparacion RR ON (Reparación.nroReparac = RR.nroReparac)
-                INNER JOIN Repuesto ON (RR.codRep = Repuesto.codRep)
 WHERE ((RR.precio > 1000) AND (RR.precio < 5000));
 ```
 
@@ -130,9 +129,9 @@ HAVING COUNT(Reparación.nroReparac) = ALL (
 menos 10 repuestos distintos.
 
 ```sql
-SELECT Reparación.fecha, Técnico.nombre, Reparación.precio_total
-FROM Reparación INNER JOIN Técnico ON (Reparación.codTec = Técnico.codTec)
-                INNER JOIN RepuestoReparacion RR ON (Reparación.nroReparac = RR.nroReparac)
-GROUP BY Reparación.fecha, Técnico.nombre, Reparación.precio_total
-HAVING COUNT(DISTINCT RR.codRep) >= 10;
+SELECT R.fecha, R.nombre, R.precio_total
+FROM R INNER JOIN Técnico ON (R.codTec = Técnico.codTec)
+                INNER JOIN RepuestoReparacion RR ON (R.nroReparac = RR.nroReparac)
+GROUP BY R.nroReparac, R.fecha, Técnico.nombre, R.precio_total
+HAVING COUNT(*) >= 10;
 ```
