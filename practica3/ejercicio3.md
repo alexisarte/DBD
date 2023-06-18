@@ -10,7 +10,7 @@
 
 1. Eliminar el cliente con DNI:25326992. 
       
-        Cliente25326992 ⇐ Cliente - σ (DNI = 25326992) (Cliente)
+        Cliente25326992 ⇐ σ DNI = 25326992 (Cliente)
         Viajes25326992 ⇐ π FECHA, HORA, DNI, cpOrigen (Fk), cpDestino (Fk), razon_social(Fk), descripcion (Cliente25326992 |x| Viaje)
         Viaje ⇐ Viaje - Viajes25326992 
         Cliente ⇐ Cliente - Cliente25326992

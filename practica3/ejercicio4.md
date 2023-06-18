@@ -14,7 +14,7 @@
 
 1. Listar DNI, nombre, apellido y email de integrantes que sean de la ciudad ‘La Plata’ y estén inscriptos en torneos que se disputaron durante 2019. 
 
-        π DNI, nombre, apellido, email (((σ (ciudad = ‘La Plata’) (Integrante)) |x| Equipo)) |x| (Inscripcion |x|  (σ (FECHA >= ‘01/01/2019’) ^ (FECHA <= ‘31/12/2019’) (TorneoPesca))))
+        π DNI, nombre, apellido, email (((σ (ciudad = ‘La Plata’) (Integrante)) |x| Equipo)) |x| (Inscripcion |x|  (σ (FECHA >= ‘01/01/2019’) ^ (FECHA <= ‘31/12/2019’) (TorneoPesca)))
 
 
 2. Reportar nombre y descripción de equipos que solo se hayan inscripto en torneos de 2019.
@@ -25,9 +25,9 @@ Torneos2019 ⇐ Equipo |x| (Inscripcion |x| (σ (fecha >= ‘01/01/2019’) ^ (f
 
 3. Listar nombre, ubicación, extensión y descripción de lagunas que hayan tenido torneos durante 2019 y no hayan tenido torneos durante 2020. 
 
-        LagunasTorneos2019 ⇐ Laguna |x|  (π nroLaguna (σ (fecha >= ‘01/01/2019’) ^ (fecha <= ‘31/12/2019’) (TorneoPesca))))
+        LagunasTorneos2019 ⇐ Laguna |x|  (π nroLaguna (σ (fecha >= ‘01/01/2019’) ^ (fecha <= ‘31/12/2019’) (TorneoPesca)))
 
-        LagunasTorneos2020 ⇐ Laguna |x|  (π nroLaguna (σ (fecha >= ‘01/01/2020’) ^ (fecha <= ‘31/12/2020’) (TorneoPesca))))
+        LagunasTorneos2020 ⇐ Laguna |x|  (π nroLaguna (σ (fecha >= ‘01/01/2020’) ^ (fecha <= ‘31/12/2020’) (TorneoPesca)))
 
         π nombreL, ubicación,extension, descripción (LagunasTorneos2019 - LagunasTorneos2020)
 
